@@ -27,7 +27,7 @@ const Card = ({ info }) => {
               src={RESTAURANT_IMG + resImg}
               alt=""
               />
-              <div className="absolute bottom-1 left-3 font-extrabold text-xl text-black">{bannerText?bannerText:""}</div>
+              <div className="absolute bottom-1 left-3 font-extrabold text-xl text-white">{bannerText?bannerText:""}</div>
           </div>
               </div>
           <div className="px-4">
