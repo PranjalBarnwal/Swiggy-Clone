@@ -5,7 +5,7 @@ import useGetRestaurant from "../helper/useGetRestaurant";
 import Card from "./Card";
 
 const Body = () => {
-  const restaurant = useGetRestaurant();
+   const restaurant = useGetRestaurant();
 
   return (
     <div className="px-48">
