@@ -6,7 +6,15 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FiLifeBuoy } from "react-icons/fi";
 import { BiSolidOffer } from "react-icons/bi";
 import { LuShoppingCart } from "react-icons/lu";
+import { useDispatch } from "react-redux";
+import { filterRestaurant } from "../helper/restaurantSlice";
+
 const Header = () => {
+  const dispatch = useDispatch();
+  const filterRestaurant = (e) => {
+    dispatch(filterRestaurant(e.target.value));
+  };
+
   return (
     <div className="flex justify-around p-1 items-center list-none shadow text-gray-700 font-medium">
       <div className="w-8 flex justify-around items-center">
@@ -28,9 +36,8 @@ const Header = () => {
           <input
             className="p-2 border-gray-200 border-2 focus:outline-gray-200 "
             type="text"
-            name=""
-            id=""
             placeholder="search restaurants"
+            onChange={filterRestaurant}
           />
         </div>
         <li className="flex items-center ml-16 relative  hover:text-orange-600">

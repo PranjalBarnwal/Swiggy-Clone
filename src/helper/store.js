@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import restaurantSlice from "./restaurantSlice";
+import restaurantReducer from "./restaurantSlice";
 
-const store = configureStore({ reducer: {
-    restaurant:restaurantSlice
-} });
+const store = configureStore({
+  reducer: {
+    restaurant: restaurantReducer,
+  },
+});
 
 export default store;

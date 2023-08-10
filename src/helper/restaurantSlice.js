@@ -1,17 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import useGetRestaurant from "./useGetRestaurant";
-
-const resList = useGetRestaurant();
-
 
 const restaurantSlice = createSlice({
   name: "resData",
   initialState: {
-    restaurantList: resList,
+    restaurantList: [],
   },
   reducers: {
+    setRestaurantList: (state, action) => {
+      state.restaurantList = action.payload;
+    },
     filterRestaurant: (state, action) => {
-      state.restaurantList = resList.filter((restaurant) => {
+      state.restaurantList = state.restaurantList.filter((restaurant) => {
         return restaurant.info.name
           .toLowerCase()
           .includes(action.payload.toLowerCase());
@@ -20,5 +19,5 @@ const restaurantSlice = createSlice({
   },
 });
 
-export const {filterRestaurant}=restaurantSlice.actions;
+export const { setRestaurantList, filterRestaurant } = restaurantSlice.actions;
 export default restaurantSlice.reducer;

@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
-import { BiFilterAlt } from "react-icons/bi";
-import { IoIosArrowDown } from "react-icons/io";
-import useGetRestaurant from "../helper/useGetRestaurant";
+import { useDispatch, useSelector } from "react-redux";
+import useGetRestaurant from "./../helper/useGetRestaurant";
 import Card from "./Card";
 
 const Body = () => {
-   const restaurant = useGetRestaurant();
+  const dispatch = useDispatch();
+  useGetRestaurant(); // Fetch and set the restaurant data
+
+  const restaurantList = useSelector(
+    (store) => store.restaurant.restaurantList
+  );
 
   return (
     <div className="px-48">
@@ -16,10 +20,10 @@ const Body = () => {
       <div className="flex">{/* Filter and sorting elements */}</div>
 
       <div className="flex flex-wrap justify-start gap-12">
-        {restaurant &&  
-          restaurant.map((res, index) => (
+        {restaurantList &&
+          restaurantList.map((res) => (
             <div key={res.info.id} className="w-60">
-              <Card  {...res} />
+              <Card {...res} />
             </div>
           ))}
       </div>
