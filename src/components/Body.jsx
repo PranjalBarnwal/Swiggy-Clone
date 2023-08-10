@@ -4,11 +4,11 @@ import useGetRestaurant from "./../helper/useGetRestaurant";
 import Card from "./Card";
 
 const Body = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   useGetRestaurant(); // Fetch and set the restaurant data
 
   const restaurantList = useSelector(
-    (store) => store.restaurant.restaurantList
+    (store) => store.restaurant.filteredRestaurantList
   );
 
   return (

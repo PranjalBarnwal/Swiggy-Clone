@@ -1,3 +1,5 @@
+//need to think on this code
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setRestaurantList } from "./restaurantSlice";
@@ -12,17 +14,22 @@ const useGetRestaurant = () => {
         const response = await fetch(FETCH_RESTAURANT);
         const data = await response.json();
         const restaurantList =
-          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants ||
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+          data?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants ||
+          data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants;
-
-        dispatch(setRestaurantList(restaurantList));
+          dispatch(setRestaurantList(restaurantList));
       } catch (error) {
         console.log(error);
       }
     }
 
     getRestaurant();
-  }, [dispatch]);
+  }, [dispatch]); //why using dispatch here??
 
   return null;
 };

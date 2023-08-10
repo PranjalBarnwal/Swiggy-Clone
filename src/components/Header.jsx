@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/logo.png";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -7,14 +7,17 @@ import { FiLifeBuoy } from "react-icons/fi";
 import { BiSolidOffer } from "react-icons/bi";
 import { LuShoppingCart } from "react-icons/lu";
 import { useDispatch } from "react-redux";
-import { filterRestaurant } from "../helper/restaurantSlice";
+import { filterRestaurantByName } from "../helper/restaurantSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const filterRestaurant = (e) => {
-    dispatch(filterRestaurant(e.target.value));
-  };
+  // const [searchText, setSearchText] = useState("");
 
+  const handleSearch = (e) => {
+    // const text = e.target.value;
+    // setSearchText(text);
+    dispatch(filterRestaurantByName(e.target.value));
+  };
   return (
     <div className="flex justify-around p-1 items-center list-none shadow text-gray-700 font-medium">
       <div className="w-8 flex justify-around items-center">
@@ -37,7 +40,8 @@ const Header = () => {
             className="p-2 border-gray-200 border-2 focus:outline-gray-200 "
             type="text"
             placeholder="search restaurants"
-            onChange={filterRestaurant}
+            // value={searchText}
+            onChange={handleSearch}
           />
         </div>
         <li className="flex items-center ml-16 relative  hover:text-orange-600">
