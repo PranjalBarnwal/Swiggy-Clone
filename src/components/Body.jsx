@@ -16,7 +16,7 @@ const Body = () => {
       <div className="flex">{/* Filter and sorting elements */}</div>
 
       <div className="flex flex-wrap justify-start gap-12">
-        {restaurant &&
+        {restaurant &&  
           restaurant.map((res, index) => (
             <div key={res.info.id} className="w-60">
               <Card  {...res} />

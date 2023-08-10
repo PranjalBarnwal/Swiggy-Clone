@@ -1,6 +1,6 @@
 import React from "react";
 import { RESTAURANT_IMG } from "../helper/links";
-import {MdStars} from "react-icons/md"
+import { MdStars } from "react-icons/md";
 
 const Card = ({ info }) => {
   const resName = info?.name;
@@ -19,22 +19,33 @@ const Card = ({ info }) => {
     <>
       {info && (
         <div>
-          <div className="bg-gradient-to-b from-transparent to-black rounded-s z-20">
-
           <div className="rounded-xl w-64 h-44 overflow-hidden relative">
-            <img
-              className="w-full h-full object-cover"
-              src={RESTAURANT_IMG + resImg}
-              alt=""
+            <div className="relative">
+              <img
+                className="w-full h-full object-cover"
+                src={RESTAURANT_IMG + resImg}
+                alt=""
               />
-              <div className="absolute bottom-1 left-3 font-extrabold text-xl text-white">{bannerText?bannerText:""}</div>
-          </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+            </div>
+            {info?.aggregatedDiscountInfoV3?.header && (
+              <div className="absolute bottom-1 left-3 font-extrabold text-xl text-white">
+                {bannerText}
               </div>
-          <div className="px-4">
-            <div className="font-semibold text-lg">{resName}</div>
-            <div className="flex items-center gap-2"><MdStars/>{resRating}</div>
+            )}
+          </div>
+          <div className="px-4 h-30">
+            <div className="font-semibold text-lg  overflow-hidden whitespace-nowrap overflow-ellipsis">
+              {resName}
+            </div>
+            <div className="flex items-center gap-2">
+              <MdStars />
+              {resRating}
+            </div>
             <div className="font-light">{resArea}</div>
-            <div className="overflow-hidden text-ellipsis font-light">{cuisineItems}</div>
+            <div className="font-light  overflow-hidden whitespace-nowrap overflow-ellipsis">
+              {cuisineItems}
+            </div>
           </div>
         </div>
       )}

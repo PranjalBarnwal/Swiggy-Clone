@@ -11,16 +11,28 @@ const Header = () => {
     <div className="flex justify-around p-1 items-center list-none shadow text-gray-700 font-medium">
       <div className="w-8 flex justify-around items-center">
         <img src={logo} alt="" />
-        <Link to="/" className="ml-10 border-b-2 border-gray-600 font-bold  hover:text-orange-600 hover:border-orange-600">
+        <Link
+          to="/"
+          className="ml-10 border-b-2 border-gray-600 font-bold  hover:text-orange-600 hover:border-orange-600"
+        >
           Home
         </Link>
       </div>
 
       <div className="flex justify-around p-3 items-center list-none">
-        <Link to="/search" className="flex items-center ml-16  hover:text-orange-600">
+        <div
+          to="/search"
+          className="flex items-center ml-16  hover:text-orange-600"
+        >
           <AiOutlineSearch className="m-2 text-[20px]" />
-          Search
-        </Link>
+          <input
+            className="p-2 border-gray-200 border-2 focus:outline-gray-200 "
+            type="text"
+            name=""
+            id=""
+            placeholder="search restaurants"
+          />
+        </div>
         <li className="flex items-center ml-16 relative  hover:text-orange-600">
           <BiSolidOffer className="m-2 text-[20px]" />
           Offers
@@ -36,7 +48,10 @@ const Header = () => {
           <AiOutlineUser className="m-2 text-[20px]" />
           Username
         </li>
-        <Link to="/cart" className="flex items-center ml-16  hover:text-orange-600">
+        <Link
+          to="/cart"
+          className="flex items-center ml-16  hover:text-orange-600"
+        >
           <LuShoppingCart className="m-2 text-[20px]" />
           Cart
         </Link>
