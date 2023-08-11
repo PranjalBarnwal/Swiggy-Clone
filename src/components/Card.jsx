@@ -28,7 +28,7 @@ const Card = ({ info }) => {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             </div>
-            {info?.aggregatedDiscountInfoV3?.header && (
+            {info?.aggregatedDiscountInfoV3?.header&&info?.aggregatedDiscountInfoV3?.subHeader&& (
               <div className="absolute bottom-1 left-3 font-extrabold text-xl text-white">
                 {bannerText}
               </div>
