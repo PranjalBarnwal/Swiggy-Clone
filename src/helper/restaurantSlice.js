@@ -20,7 +20,7 @@ const restaurantSlice = createSlice({
       );
     },
     filterRestaurantByRating: (state, action) => {
-      const rating = +action.payload;
+      const rating = +action.payload; // + typecasts string to number
       state.filteredRestaurantList = state.restaurantList.filter(
         (restaurant) => {
           return restaurant.info.avgRating >= rating;
