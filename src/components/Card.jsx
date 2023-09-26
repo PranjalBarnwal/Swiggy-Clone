@@ -39,7 +39,7 @@ const Card = ({ info }) => {
               {resName}
             </div>
             <div className="flex items-center gap-2">
-              <MdStars />
+              <MdStars className="text-green-700 text-xl"/>
               {resRating}
             </div>
             <div className="font-light">{resArea}</div>

@@ -45,7 +45,7 @@ const Body = () => {
         Restaurant with online food delivery at your location
       </h1>
 
-      <div className="flex scroll-auto mb-5 font-normal  text-sm ">
+      <div className="flex scroll-auto mb-5 font-normal  text-sm text-gray-500">
         <div className="border-gray-300 border rounded-full px-2 py-1 flex items-center gap-1 cursor-pointer">
           Filter
           <BiFilterAlt />
@@ -56,7 +56,7 @@ const Body = () => {
         </div>
         <div
           className={`border-gray-300 border rounded-full px-2 py-1 ml-4 cursor-pointer ${
-            isFilterByRating4 ? "bg-orange-300" : ""
+            isFilterByRating4 ? "bg-orange-300 text-gray-800" : ""
           }`}
           onClick={filterByRating4}
         >
@@ -64,7 +64,7 @@ const Body = () => {
         </div>
         <div
           className={`border-gray-300 border rounded-full px-2 py-1 ml-4 cursor-pointer ${
-            isFilterByVeg ? "bg-orange-300" : ""
+            isFilterByVeg ? "bg-orange-300 text-gray-800" : ""
           }`}
           onClick={filterByVeg}
         >
@@ -81,8 +81,8 @@ const Body = () => {
       <div className="flex flex-wrap justify-start gap-12">
         {restaurantList &&
           restaurantList.map((res) => (
-            <Link to={"/restaurant/"+res.info.id} key={res.info.id} className="w-60">
-              <Card {...res} />
+            <Link  className="w-60 hover:scale-95 transition-all"  to={"/restaurant/"+res.info.id} key={res.info.id} >
+              <Card {...res}/>
             </Link>
           ))}
       </div>
