@@ -1,34 +1,40 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import useGetResData from '../helper/useGetResData';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+// console.log(resData);
+// console.log(distance,"-----");
+import useGetResData from "../helper/useGetResData";
 
 const Restaurant = () => {
-
-    const {resid}=useParams();
-    const resData=useGetResData(resid);
-    // console.log(resData);
+  const [data, setData] = useState({});
+  const { resid } = useParams();
+  const resData = useGetResData(resid);
+  useEffect(() => {
+    setData(resData?.data?.cards[0].card.card.info);
     console.log(resData?.data?.cards[0].card.card.info);
-    // console.log(distance,"-----");
-    const data=resData?.data?.cards[0]?.card?.card?.info;
-    const distance=data?.sla?.lastMileTravelString; 
-    const {name,cuisines,locality,avgRating,ratingCount}=data;
+  }, [resData]);
+  const distance=data?.sla?.lastMileTravelString;
+ 
   return (
-    <div className='mx-[21rem]'>
-        <section className="resinfo flex justify-between border-b border-gray-300 border-dashed">
+    <div className="mx-[21rem]">
+      {data && (
+        <>
+          <section className="resinfo flex justify-between border-b border-gray-300 border-dashed">
             <div className="left">
-              <p>{name}</p>
-              <p>{cuisines.join(",")}</p>
-              <p>{locality} {distance}</p>
+              <p>{data?.name}</p>
+              <p>{data?.cuisines?.join(",")}</p>
+              <p>{data.locality} {distance}</p>
             </div>
             <div className="right">
-              <p>{avgRating}</p>
-              <p>{ratingCount}</p>
+              <p>{data.avgRating}</p>
+              <p>{data.ratingCount}</p>
             </div>
-        </section>
-        <section className='menu'> Items....</section>
-        <footer></footer>
+          </section>
+          <section className="menu"> Items....</section>
+        </>
+      )}
+      <footer></footer>
     </div>
-  )
-}
+  );
+};
 
-export default Restaurant
+export default Restaurant;
