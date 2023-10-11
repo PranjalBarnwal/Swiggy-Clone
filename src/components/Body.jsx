@@ -4,7 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import useGetRestaurant from "./../helper/useGetRestaurant";
 import Card from "./Card";
-import { Link } from "react-router-dom";                                                                                                      
+import { Link } from "react-router-dom";
 import {
   filterRestaurantByRating,
   filterRestaurantByVeg,
@@ -12,12 +12,14 @@ import {
 } from "../helper/restaurantSlice";
 
 const Body = () => {
-  const mainRestaurantList=useSelector((store)=>store.restaurant.restaurantList);
+  const mainRestaurantList = useSelector(
+    (store) => store.restaurant.restaurantList
+  );
   const restaurantList = useSelector(
     (store) => store.restaurant.filteredRestaurantList
   );
   const dispatch = useDispatch();
-  useGetRestaurant(); 
+  useGetRestaurant();
   const [isFilterByRating4, setIsFilterByRating4] = useState(false);
   const [isFilterByVeg, setIsFilterByVeg] = useState(false);
 
@@ -81,8 +83,12 @@ const Body = () => {
       <div className="flex flex-wrap justify-start gap-12">
         {restaurantList &&
           restaurantList.map((res) => (
-            <Link  className="w-60 hover:scale-95 transition-all"  to={"/restaurant/"+res.info.id} key={res.info.id} >
-              <Card {...res}/>
+            <Link
+              className="w-60 hover:scale-95 transition-all"
+              to={"/restaurant/" + res.info.id}
+              key={res.info.id}
+            >
+              <Card {...res} />
             </Link>
           ))}
       </div>
