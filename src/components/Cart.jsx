@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import CartCard from './CartCard';
 
 const Cart = () => {
   const cartItems=useSelector(store=>store.cart.items);
@@ -7,9 +8,9 @@ const Cart = () => {
   return (
     <div>
       <h1>Cart</h1>
-      {
-        cartItems.map((item,id)=><p key={id}>{item.card.info.name}</p>)
-      }
+     <div className='flex p-5 flex-wrap'> {
+        cartItems.map((item,id)=><CartCard key={id} info={item.card.info}/>)
+      }</div>
     </div>
   )
 }
