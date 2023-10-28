@@ -8,16 +8,20 @@ import { BiSolidOffer } from "react-icons/bi";
 import { LuShoppingCart } from "react-icons/lu";
 import { useDispatch } from "react-redux";
 import { filterRestaurantByName } from "../helper/restaurantSlice";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const dispatch = useDispatch();
   // const [searchText, setSearchText] = useState("");
-
+  const cartItems=useSelector(store=>store.cart.items);
+  console.log(cartItems);
   const handleSearch = (e) => {
     // const text = e.target.value;
     // setSearchText(text);
     dispatch(filterRestaurantByName(e.target.value));
   };
+
+ 
   return (
     <div className="flex justify-around p-1 items-center list-none shadow text-gray-700 font-medium">
       <div className="w-8 flex justify-around items-center">
@@ -64,7 +68,7 @@ const Header = () => {
           className="flex items-center ml-16  hover:text-orange-600"
         >
           <LuShoppingCart className="m-2 text-[20px]" />
-          Cart
+          Cart{" "+cartItems.length}
         </Link>
       </div>
     </div>

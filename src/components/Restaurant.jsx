@@ -7,10 +7,10 @@ import { ImLeaf } from "react-icons/im";
 import { BiFoodTag } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import { MENU_ITEM_IMG } from "../helper/links";
+import { addItem } from "../helper/cartSlice";
 
-// console.log(resData);
-// console.log(distance,"-----");
 import useGetResData from "../helper/useGetResData";
+import { useDispatch } from "react-redux";
 
 const Restaurant = () => {
   const [data, setData] = useState({});
@@ -18,7 +18,7 @@ const Restaurant = () => {
   const [menu, setMenu] = useState([]);
   const { resid } = useParams();
   const resData = useGetResData(resid);
-  // console.log(resData);
+
   useEffect(() => {
     setData(resData?.data?.cards[0].card.card.info);
     setMenuTitle(
@@ -34,6 +34,12 @@ const Restaurant = () => {
   const distance = data?.sla?.lastMileTravelString;
   const deliveryTime = data?.sla?.deliveryTime;
   const costForTwo = data?.costForTwoMessage;
+  const dispatch=useDispatch();
+  const handleAddItem=(item)=>{
+dispatch(addItem(item));
+
+  }
+
   // console.log(menu[0]?.card?.info?.name);
   // console.log(deliveryTime);
   return (
@@ -83,7 +89,11 @@ const Restaurant = () => {
               {menuTitle} ({menu.length})
             </p>
           </section>
+
+          {/* // */}
+         
           {menu.map((item, id) => {
+           
             return (
               <div
                 className="card flex justify-between pb-10 mt-5 mb-2 border-b-[1px] border-gray-500"
@@ -124,13 +134,15 @@ const Restaurant = () => {
                       alt=""
                     />
                   </div>
-                  <button className="absolute bottom-[-10px] flex items-center justify-center w-[5vw] text-center border-2 bg-white border-gray-300 rounded text-sm p-1 text-green-500 font-bold">
+                  <button onClick={()=>handleAddItem(item)} className="absolute bottom-[-10px] flex items-center justify-center w-[5vw] text-center border-2 bg-white border-gray-300 rounded text-sm p-1 text-green-500 font-bold">
                     Add
                   </button>
                 </section>
               </div>
             );
           })}
+          {/* //
+          // */}
         </>
       )}
       <footer></footer>

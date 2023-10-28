@@ -7,38 +7,40 @@ import Card from "./Card";
 import { Link } from "react-router-dom";
 import {
   filterRestaurantByRating,
-  filterRestaurantByVeg,
+  filterRestaurantByVegAndRating,
   setRestaurantList,
 } from "../helper/restaurantSlice";
 
 const Body = () => {
+  const [isFilterByRating4, setIsFilterByRating4] = useState(false);
+  const [isFilterByVeg, setIsFilterByVeg] = useState(false);
+  const dispatch = useDispatch();
+  useGetRestaurant();
+
+  useEffect(() => {
+    dispatch(setRestaurantList(mainRestaurantList));
+
+    if (isFilterByRating4 == true || isFilterByVeg == true)
+      dispatch(
+        filterRestaurantByVegAndRating({ isFilterByVeg, isFilterByRating4 })
+      );
+  }, [isFilterByVeg, isFilterByRating4]);
+
   const mainRestaurantList = useSelector(
     (store) => store.restaurant.restaurantList
   );
+
   const restaurantList = useSelector(
     (store) => store.restaurant.filteredRestaurantList
   );
-  const dispatch = useDispatch();
-  useGetRestaurant();
-  const [isFilterByRating4, setIsFilterByRating4] = useState(false);
-  const [isFilterByVeg, setIsFilterByVeg] = useState(false);
+
 
   const filterByVeg = () => {
-    setIsFilterByVeg(!isFilterByVeg);
-    if (!isFilterByVeg) {
-      dispatch(filterRestaurantByVeg()); // Apply the filter
-    } else {
-      dispatch(setRestaurantList(mainRestaurantList)); // Reset the filter
-    }
+    setIsFilterByVeg((isFilterByVeg) => !isFilterByVeg);
   };
 
   const filterByRating4 = () => {
-    setIsFilterByRating4(!isFilterByRating4); // Toggle the state
-    if (!isFilterByRating4) {
-      dispatch(filterRestaurantByRating(4.0)); // Apply the filter
-    } else {
-      dispatch(filterRestaurantByRating(0)); // Reset the filter
-    }
+    setIsFilterByRating4((isFilterByRating4) => !isFilterByRating4);
   };
 
   return (
@@ -47,7 +49,7 @@ const Body = () => {
         Restaurant with online food delivery at your location
       </h1>
 
-      <div className="flex scroll-auto mb-5 font-normal  text-sm text-gray-500">
+      <div className="flex scroll-auto mb-5 font-normal  text-sm ">
         <div className="border-gray-300 border rounded-full px-2 py-1 flex items-center gap-1 cursor-pointer">
           Filter
           <BiFilterAlt />
@@ -58,7 +60,7 @@ const Body = () => {
         </div>
         <div
           className={`border-gray-300 border rounded-full px-2 py-1 ml-4 cursor-pointer ${
-            isFilterByRating4 ? "bg-orange-300 text-gray-800" : ""
+            isFilterByRating4 ? "bg-orange-300" : ""
           }`}
           onClick={filterByRating4}
         >
@@ -66,7 +68,7 @@ const Body = () => {
         </div>
         <div
           className={`border-gray-300 border rounded-full px-2 py-1 ml-4 cursor-pointer ${
-            isFilterByVeg ? "bg-orange-300 text-gray-800" : ""
+            isFilterByVeg ? "bg-orange-300" : ""
           }`}
           onClick={filterByVeg}
         >
@@ -84,9 +86,9 @@ const Body = () => {
         {restaurantList &&
           restaurantList.map((res) => (
             <Link
-              className="w-60 hover:scale-95 transition-all"
               to={"/restaurant/" + res.info.id}
               key={res.info.id}
+              className="w-60"
             >
               <Card {...res} />
             </Link>
