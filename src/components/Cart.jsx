@@ -9,7 +9,7 @@ const Cart = () => {
     <div>
       <h1>Cart</h1>
      <div className='flex p-5 flex-wrap'> {
-        cartItems.map((item,id)=><CartCard key={id} info={item.card.info}/>)
+        cartItems.map((item,id)=><CartCard key={id} info={item}/>)
       }</div>
     </div>
   )

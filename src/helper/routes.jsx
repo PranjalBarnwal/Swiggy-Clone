@@ -1,3 +1,29 @@
+// import React from "react";
+// import { HashRouter, Route, Switch } from "react-router-dom";
+
+// import App from "../App";
+// import Error from "../components/Error";
+// import Body from "../components/Body";
+// import Search from "../components/Search";
+// import Cart from "../components/Cart";
+// import Restaurant from "../components/Restaurant";
+
+// const routes = (
+//   <HashRouter>
+//     <Switch>
+//       <Route path="/" exact component={App} />
+//       <Route path="/error" component={Error} />
+//       <Route path="/body" component={Body} />
+//       <Route path="/search" component={Search} />
+//       <Route path="/cart" component={Cart} />
+//       <Route path="/restaurant/:resid" component={Restaurant} />
+//     </Switch>
+//   </HashRouter>
+// );
+
+// export default routes;
+
+
 import Search from "../components/Search";
 import Error from "../components/Error";
 import Cart from "../components/Cart";
@@ -33,3 +59,4 @@ const routes = createBrowserRouter([
   ]);
 
   export default routes;
+
