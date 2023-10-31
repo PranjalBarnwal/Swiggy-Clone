@@ -1,5 +1,5 @@
 // import React from "react";
-// import { HashRouter, Route, Switch } from "react-router-dom";
+// import { HashRouter, Route, Routes } from "react-router-dom";
 
 // import App from "../App";
 // import Error from "../components/Error";
@@ -10,14 +10,14 @@
 
 // const routes = (
 //   <HashRouter>
-//     <Switch>
-//       <Route path="/" exact component={App} />
-//       <Route path="/error" component={Error} />
-//       <Route path="/body" component={Body} />
-//       <Route path="/search" component={Search} />
-//       <Route path="/cart" component={Cart} />
-//       <Route path="/restaurant/:resid" component={Restaurant} />
-//     </Switch>
+//     <Routes>
+//       <Route path="/" element={<App />} index />
+//       <Route path="error" element={<Error />} />
+//       <Route path="body" element={<Body />} />
+//       <Route path="search" element={<Search />} />
+//       <Route path="cart" element={<Cart />} />
+//       <Route path="restaurant/:resid" element={<Restaurant />} />
+//     </Routes>
 //   </HashRouter>
 // );
 

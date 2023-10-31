@@ -93,7 +93,7 @@ dispatch(addItem(item));
           {/* // */}
          
           {menu.map((item, id) => {
-           
+          
             return (
               <div
                 className="card flex justify-between pb-10 mt-5 mb-2 border-b-[1px] border-gray-500"
@@ -134,7 +134,9 @@ dispatch(addItem(item));
                       alt=""
                     />
                   </div>
-                  <button onClick={()=>handleAddItem(item)} className="absolute bottom-[-10px] flex items-center justify-center w-[5vw] text-center border-2 bg-white border-gray-300 rounded text-sm p-1 text-green-500 font-bold">
+                  <button onClick={()=>{
+                    const { id, name, price, imageId } = item?.card?.info;
+                    handleAddItem({id,name,price,imageId})}} className="absolute bottom-[-10px] flex items-center justify-center w-[5vw] text-center border-2 bg-white border-gray-300 rounded text-sm p-1 text-green-500 font-bold">
                     Add
                   </button>
                 </section>
