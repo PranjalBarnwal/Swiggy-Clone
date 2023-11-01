@@ -8,6 +8,7 @@ import { BiFoodTag } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import { MENU_ITEM_IMG } from "../helper/links";
 import { addItem } from "../helper/cartSlice";
+import toast from "react-hot-toast";
 
 import useGetResData from "../helper/useGetResData";
 import { useDispatch } from "react-redux";
@@ -37,6 +38,7 @@ const Restaurant = () => {
   const dispatch=useDispatch();
   const handleAddItem=(item)=>{
 dispatch(addItem(item));
+toast.success("Added to Cart");
 
   }
 

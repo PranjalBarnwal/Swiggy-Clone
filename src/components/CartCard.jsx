@@ -33,17 +33,18 @@ const CartCard = ({ info }) => {
         <div className="counter flex space-x-7">
           <button
             onClick={() => {
-              console.log(typeof(count));
               setCount(Number(count) + 1);
-              addItem(info);
+              dispatch(addItem(info));
+              console.log(typeof(count));
             }}
             className="border px-3 py-1"
-          >
+            >
             +
           </button>
           <div>{count}</div>
           <button
             onClick={() => {
+              console.log(info);
               setCount(Number(count) - 1);
               dispatch(removeItem(info));
             }}
