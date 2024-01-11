@@ -4,7 +4,7 @@ import CartCard from './CartCard';
 
 const Cart = () => {
   const cartItems=useSelector(store=>store.cart.items);
-
+  
   return (
     <div>
       <h1>Cart</h1>

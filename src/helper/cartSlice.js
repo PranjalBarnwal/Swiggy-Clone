@@ -33,6 +33,7 @@ const cartSlice = createSlice({
             state.items[i].count--;
             if(state.items[i].count===0){
               state.items.splice(i,1);
+              // state.items.splice(i, 0, "");
             }
           }
         }

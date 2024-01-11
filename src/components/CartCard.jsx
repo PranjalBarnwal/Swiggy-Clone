@@ -10,18 +10,11 @@ const CartCard = ({ info }) => {
   const dishName = info?.name;
   const dishImg = info?.imageId;
   const amount = Math.ceil(info?.price / 100);
-  const itemCount = useSelector((store) =>{
-    console.log(store);
-    for(let i=0;i<store.cart.items.length;i++){
-      if (store.cart.items[i].id === info.id) 
-      return store.cart.items[i].count;
-      
-    }
-  } 
-
-  ); //showing some warning
-  const [count, setCount] = useState(itemCount);
-  console.log(itemCount);
+  const count2=info?.count;
+ 
+ 
+  const [count, setCount] = useState(count2);
+  // console.log(itemCount);
   return (
     <div className="flex-col p-5">
       <div className="rounded-xl w-64 h-44 overflow-hidden relative">
@@ -41,21 +34,21 @@ const CartCard = ({ info }) => {
             onClick={() => {
               setCount((count)=>Number(count) + 1);
               dispatch(addItem(info));
-             console.log(count); 
             }}
             className="border px-3 py-1"
             >
             +
           </button>
 
-          <div>{count}</div>
+          <div>{count2}</div>
           
           
           <button
             onClick={() => {
               console.log(count+"this is count");
-              setCount((count)=>Number(count) - 1);
               dispatch(removeItem(info));
+              setCount((count)=>(count - 1));
+              
             }}
             className="border px-3 py-1"
           >
