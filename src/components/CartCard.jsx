@@ -6,16 +6,22 @@ import { addItem, removeItem } from "../helper/cartSlice";
 const CartCard = ({ info }) => {
   const dispatch = useDispatch();
 
-  //  console.log(clonedInfo);
+ 
   const dishName = info?.name;
   const dishImg = info?.imageId;
   const amount = Math.ceil(info?.price / 100);
-  const itemCount = useSelector((store) =>
-    store.cart.items.map((item) => {
-      if (item.id === info.id) return item.count;
-    })
+  const itemCount = useSelector((store) =>{
+    console.log(store);
+    for(let i=0;i<store.cart.items.length;i++){
+      if (store.cart.items[i].id === info.id) 
+      return store.cart.items[i].count;
+      
+    }
+  } 
+
   ); //showing some warning
   const [count, setCount] = useState(itemCount);
+  console.log(itemCount);
   return (
     <div className="flex-col p-5">
       <div className="rounded-xl w-64 h-44 overflow-hidden relative">
@@ -33,19 +39,22 @@ const CartCard = ({ info }) => {
         <div className="counter flex space-x-7">
           <button
             onClick={() => {
-              setCount(Number(count) + 1);
+              setCount((count)=>Number(count) + 1);
               dispatch(addItem(info));
-              console.log(typeof(count));
+             console.log(count); 
             }}
             className="border px-3 py-1"
             >
             +
           </button>
+
           <div>{count}</div>
+          
+          
           <button
             onClick={() => {
-              console.log(info);
-              setCount(Number(count) - 1);
+              console.log(count+"this is count");
+              setCount((count)=>Number(count) - 1);
               dispatch(removeItem(info));
             }}
             className="border px-3 py-1"

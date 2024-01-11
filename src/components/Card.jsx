@@ -18,11 +18,11 @@ const Card = ({ info }) => {
   return (
     <>
       {info && (
-        <div>
+        <div className="bg-slate-100">
           <div className="rounded-xl w-64 h-44 overflow-hidden relative">
             <div className="relative">
               <img
-                className="w-full h-full object-cover"
+                 className="w-full h-full object-cover object-center"
                 src={RESTAURANT_IMG + resImg}
                 alt=""
               />
